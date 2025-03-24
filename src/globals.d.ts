@@ -92,5 +92,6 @@ declare namespace WorldRanks {
     population: number;
     area: number;
     region: string;
+    unMember: boolean;
   }
 }

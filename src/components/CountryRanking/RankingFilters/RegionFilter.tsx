@@ -1,18 +1,8 @@
 import { PropsWithChildren, useCallback } from "react";
+import { Region } from "src/context/FiltersContext";
+import { useFiltersContext } from "src/context/useFiltersContext";
 
-const REGIONS = [
-  "Americas",
-  "Antartica",
-  "Africa",
-  "Asia",
-  "Europe",
-  "Oceania",
-];
-
-type RegionFilterProps = {
-  selectedRegions: string[];
-  setSelectedRegions: (region: string[]) => void;
-};
+const regions = Object.values(Region);
 
 type RegionFilterButtonProps = {
   active: boolean;
@@ -39,12 +29,14 @@ const RegionFilterButton = ({
   );
 };
 
-export const RegionFilter = ({
-  selectedRegions,
-  setSelectedRegions,
-}: RegionFilterProps) => {
+export const RegionFilter = () => {
+  const {
+    state: { selectedRegions },
+    actions: { setSelectedRegions },
+  } = useFiltersContext();
+
   const handleRegionClick = useCallback(
-    (region: string, status: boolean) => {
+    (region: Region, status: boolean) => {
       if (status) {
         setSelectedRegions([...selectedRegions, region]);
       } else {
@@ -56,7 +48,7 @@ export const RegionFilter = ({
 
   return (
     <div className="flex flex-wrap gap-2">
-      {REGIONS.map((region) => (
+      {regions.map((region) => (
         <RegionFilterButton
           key={region}
           active={selectedRegions.includes(region)}

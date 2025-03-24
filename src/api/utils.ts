@@ -5,9 +5,9 @@ export const fetchCountry = async (code: string) => {
   return response.json();
 };
 
-export const fetchCountries = async () => {
+export const fetchCountries = async (independent?: boolean) => {
   const response = await fetch(
-    `${restCountriesBaseUrl}/all?fields=name,population,region,area,flags,cca2`,
+    `${restCountriesBaseUrl}/${independent ? `independent?status=${independent}&` : "all?"}fields=name,population,region,area,flags,cca2,unMember`,
   );
   return response.json() as Promise<WorldRanks.RankingTableData[]>;
 };

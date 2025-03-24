@@ -4,10 +4,11 @@ import { useRankingDataTable } from "./useRankingDataTable";
 
 type Props = {
   data: WorldRanks.RankingTableData[];
+  isFetching: boolean;
 };
 
-export const RankingDataTable = ({ data }: Props) => {
-  const { handleRowClick, table } = useRankingDataTable(data);
+export const RankingDataTable = ({ data, isFetching }: Props) => {
+  const { handleRowClick, table } = useRankingDataTable(data, isFetching);
 
   return (
     <div className="grid grid-cols-1 gap-8 mt-4 md:grid-cols-[1fr_3fr]">

@@ -4,12 +4,12 @@ import RankingDataTable from "@components/CountryRanking/RankingDataTable/Rankin
 import { useCountryRanking } from "./useCountryRanking";
 
 const CountryRanking = () => {
-  const { rankingData } = useCountryRanking();
+  const { rankingData, isFetching } = useCountryRanking();
 
   return (
     <>
-      <RankingHeader countriesCount={rankingData?.length ?? 0} />
-      {rankingData ? <RankingDataTable data={rankingData} /> : null}
+      <RankingHeader countriesCount={rankingData.length ?? 0} />
+      <RankingDataTable data={rankingData} isFetching={isFetching} />
     </>
   );
 };
