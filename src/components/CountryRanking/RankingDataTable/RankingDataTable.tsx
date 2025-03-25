@@ -68,30 +68,30 @@ export const RankingDataTable = ({ data, isFetching }: Props) => {
             ))}
           </tfoot>
         </table>
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-4 mt-8">
           <button
-            className="border rounded p-1"
+            className="border rounded p-1 w-8"
             onClick={() => table.firstPage()}
             disabled={!table.getCanPreviousPage()}
           >
             {"<<"}
           </button>
           <button
-            className="border rounded p-1"
+            className="border rounded p-1 w-8"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             {"<"}
           </button>
           <button
-            className="border rounded p-1"
+            className="border rounded p-1 w-8"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
             {">"}
           </button>
           <button
-            className="border rounded p-1"
+            className="border rounded p-1 w-8"
             onClick={() => table.lastPage()}
             disabled={!table.getCanNextPage()}
           >

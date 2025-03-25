@@ -32,12 +32,14 @@ interface FiltersContextProps {
       independent: boolean;
     };
     sortedBy: RankingSortingOption;
+    searchTerm: string;
   };
   actions: {
     setSortedBy: (sortBy: RankingSortingOption) => void;
     setSelectedRegions: (regions: Region[]) => void;
     setIndependent: (status: boolean) => void;
     setUnitedNationsMember: (status: boolean) => void;
+    setSearchTerm: (term: string) => void;
   };
 }
 

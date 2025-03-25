@@ -7,22 +7,24 @@ export const useFiltersContext = () => {
     throw new Error("useFilterContext must be used within a FilterProvider");
   }
   const {
-    state: { selectedRegions, selectedStatus, sortedBy },
+    state: { selectedRegions, selectedStatus, sortedBy, searchTerm },
     actions: {
       setSelectedRegions,
       setIndependent,
       setUnitedNationsMember,
       setSortedBy,
+      setSearchTerm,
     },
   } = context;
 
   return {
-    state: { selectedRegions, selectedStatus, sortedBy },
+    state: { selectedRegions, selectedStatus, sortedBy, searchTerm },
     actions: {
       setSelectedRegions,
       setIndependent,
       setUnitedNationsMember,
       setSortedBy,
+      setSearchTerm,
     },
   };
 };

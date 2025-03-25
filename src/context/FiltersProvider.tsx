@@ -1,4 +1,4 @@
-import { useState, ReactNode, useEffect } from "react";
+import { useState, ReactNode } from "react";
 import { FiltersContext, RankingSortingOption, Region } from "./FiltersContext";
 
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
@@ -13,6 +13,7 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
     unitedNationsMember: false,
     independent: true,
   });
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const setIndependent = (status: boolean) => {
     setSelectedStatus((prev) => ({
@@ -35,12 +36,14 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
           sortedBy,
           selectedRegions,
           selectedStatus,
+          searchTerm,
         },
         actions: {
           setSortedBy,
           setSelectedRegions,
           setIndependent,
           setUnitedNationsMember,
+          setSearchTerm,
         },
       }}
     >

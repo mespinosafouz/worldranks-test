@@ -43,7 +43,7 @@ export const useRankingDataTable = (
         isFetching ? (
           <Skeleton className="h-[18px] w-[100px]" rounded="full" />
         ) : (
-          info.getValue()
+          info.getValue().toLocaleString()
         ),
       header: "Population",
     }),
@@ -52,7 +52,7 @@ export const useRankingDataTable = (
         isFetching ? (
           <Skeleton className="h-[18px] w-[80px]" rounded="full" />
         ) : (
-          info.getValue()
+          info.getValue().toLocaleString()
         ),
       header: "Area(km2)",
     }),

@@ -10,7 +10,7 @@ export const useCountryRanking = () => {
   >([]);
 
   const {
-    state: { selectedRegions, selectedStatus, sortedBy },
+    state: { selectedRegions, selectedStatus, sortedBy, searchTerm },
   } = useFiltersContext();
 
   const {
@@ -42,6 +42,14 @@ export const useCountryRanking = () => {
       );
     }
 
+    if (searchTerm) {
+      filteredData = filteredData.filter((country) =>
+        country.name.common
+          .toLocaleLowerCase()
+          .includes(searchTerm.toLocaleLowerCase()),
+      );
+    }
+
     const sortedData = filteredData.sort((a, b) => {
       switch (sortedBy) {
         case RankingSortingOption.Name:
@@ -56,7 +64,7 @@ export const useCountryRanking = () => {
     });
 
     setRankingTableData(sortedData);
-  }, [rankingData, selectedRegions, selectedStatus, sortedBy]);
+  }, [rankingData, searchTerm, selectedRegions, selectedStatus, sortedBy]);
 
   return {
     isFetching,
