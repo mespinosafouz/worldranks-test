@@ -1,6 +1,7 @@
 import RankingFilters from "@components/CountryRanking/RankingFilters/RankingFilters";
 import { flexRender } from "@tanstack/react-table";
 import { useRankingDataTable } from "./useRankingDataTable";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   data: WorldRanks.RankingTableData[];
@@ -9,6 +10,9 @@ type Props = {
 
 export const RankingDataTable = ({ data, isFetching }: Props) => {
   const { handleRowClick, table } = useRankingDataTable(data, isFetching);
+  const { t } = useTranslation("countryRanking", {
+    keyPrefix: "rankingDatatable",
+  });
 
   return (
     <div className="grid grid-cols-1 gap-8 mt-4 md:grid-cols-[1fr_3fr]">
@@ -98,7 +102,7 @@ export const RankingDataTable = ({ data, isFetching }: Props) => {
             {">>"}
           </button>
           <span className="flex items-center gap-1">
-            <div>Page</div>
+            <div>{t("page")}</div>
             <strong>
               {table.getState().pagination.pageIndex + 1} of{" "}
               {table.getPageCount().toLocaleString()}
@@ -112,7 +116,7 @@ export const RankingDataTable = ({ data, isFetching }: Props) => {
           >
             {[10, 15, 20].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
-                Show {pageSize}
+                {t("show", { pageSize })}
               </option>
             ))}
           </select>

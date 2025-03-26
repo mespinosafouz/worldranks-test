@@ -1,5 +1,6 @@
 import { debounce } from "lodash";
 import { useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useFiltersContext } from "src/context/useFiltersContext";
 
@@ -11,6 +12,9 @@ export const RankingHeader = ({ countriesCount }: RankingHeaderProps) => {
     state: { searchTerm },
     actions: { setSearchTerm },
   } = useFiltersContext();
+  const { t } = useTranslation("countryRanking", {
+    keyPrefix: "rankingHeader",
+  });
 
   const debouncedSetSearchTerm = useMemo(
     () => debounce((value: string) => setSearchTerm(value), 800),
@@ -31,7 +35,7 @@ export const RankingHeader = ({ countriesCount }: RankingHeaderProps) => {
       <div className="relative">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder={t("search")}
           className="pl-10 pr-4 py-2 bg-[var(--color-bg-ui)] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={handleInputChange}
           defaultValue={searchTerm}

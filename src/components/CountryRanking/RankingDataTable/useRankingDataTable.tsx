@@ -5,12 +5,16 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useTranslation } from "react-i18next";
 import { Skeleton } from "src/components/common/Skeleton";
 
 export const useRankingDataTable = (
   data: WorldRanks.RankingTableData[],
   isFetching: boolean,
 ) => {
+  const { t } = useTranslation("countryRanking", {
+    keyPrefix: "rankingDatatable",
+  });
   const navigate = useNavigate();
   const columnHelper = createColumnHelper<WorldRanks.RankingTableData>();
 
@@ -25,7 +29,7 @@ export const useRankingDataTable = (
             src={info.getValue()}
           ></img>
         ),
-      header: "Flag",
+      header: t("flag.header"),
       maxSize: 100,
       minSize: 100,
     }),
@@ -36,7 +40,7 @@ export const useRankingDataTable = (
         ) : (
           info.getValue()
         ),
-      header: "Name",
+      header: t("name.header"),
     }),
     columnHelper.accessor("population", {
       cell: (info) =>
@@ -45,7 +49,7 @@ export const useRankingDataTable = (
         ) : (
           info.getValue().toLocaleString()
         ),
-      header: "Population",
+      header: t("population.header"),
     }),
     columnHelper.accessor("area", {
       cell: (info) =>
@@ -54,7 +58,7 @@ export const useRankingDataTable = (
         ) : (
           info.getValue().toLocaleString()
         ),
-      header: "Area(km2)",
+      header: t("area.header"),
     }),
     columnHelper.accessor("region", {
       cell: (info) =>
@@ -63,7 +67,7 @@ export const useRankingDataTable = (
         ) : (
           info.getValue()
         ),
-      header: "Region",
+      header: t("region.header"),
     }),
   ];
 
