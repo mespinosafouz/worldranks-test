@@ -7,6 +7,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), TanStackRouterVite()],
+  base: "/worldranks-test",
   resolve: {
     alias: {
       src: path.resolve(__dirname, "src"),
