@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <FilterProvider>
-        <RouterProvider router={router} />
+        <RouterProvider router={router} basepath="/worldranks-test" />
       </FilterProvider>
     </QueryClientProvider>
   </StrictMode>,
