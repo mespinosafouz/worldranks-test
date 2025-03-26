@@ -71,6 +71,7 @@ declare namespace WorldRanks {
     capitalInfo: {
       latlng: number[];
     };
+    borders: string[];
   }
 
   interface RankingTableData {

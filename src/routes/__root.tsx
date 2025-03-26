@@ -17,7 +17,7 @@ function RootComponent() {
           alt="world ranks logo"
         />
       </div>
-      <div className="relative bg-[var(--color-bg)] border border-[var(--color-border-ui)] w-full rounded-lg shadow-lg p-8 md:absolute md:w-7/8 md:min-h-[400px] md:top-[70%] md:mt-6">
+      <div className="relative bg-[var(--color-bg)] border border-[var(--color-border-ui)] w-full p-8 md:absolute md:w-7/8 md:min-h-[400px] md:top-[70%] md:mt-6 md:rounded-lg md:shadow-lg">
         <Outlet />
       </div>
     </div>
