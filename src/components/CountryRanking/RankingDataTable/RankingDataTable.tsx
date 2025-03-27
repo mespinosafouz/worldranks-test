@@ -17,8 +17,8 @@ export const RankingDataTable = ({ data, isFetching }: Props) => {
   return (
     <div className="grid grid-cols-1 gap-8 mt-4 md:grid-cols-[1fr_3fr]">
       <RankingFilters />
-      <div>
-        <table className="w-full px-8" style={{ padding: "0 1rem" }}>
+      <div className="overflow-x-scroll md:overflow-x-auto">
+        <table className="w-full min-w-2xl px-8" style={{ padding: "0 1rem" }}>
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id} className="h-16 py-8">
@@ -72,7 +72,9 @@ export const RankingDataTable = ({ data, isFetching }: Props) => {
             ))}
           </tfoot>
         </table>
-        <div className="flex items-center justify-end gap-4 mt-8">
+      </div>
+      <div className="flex flex-col items-center justify-end gap-4 mt-6 md:flex-row md:col-span-2 ">
+        <div className="flex justify-center gap-4 w-full md:justify-end">
           <button
             className="border rounded p-1 w-8"
             onClick={() => table.firstPage()}
@@ -101,26 +103,26 @@ export const RankingDataTable = ({ data, isFetching }: Props) => {
           >
             {">>"}
           </button>
-          <span className="flex items-center gap-1">
-            <div>{t("page")}</div>
-            <strong>
-              {table.getState().pagination.pageIndex + 1} of{" "}
-              {table.getPageCount().toLocaleString()}
-            </strong>
-          </span>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={(e) => {
-              table.setPageSize(Number(e.target.value));
-            }}
-          >
-            {[10, 15, 20].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                {t("show", { pageSize })}
-              </option>
-            ))}
-          </select>
         </div>
+        <span className="flex items-center gap-1 whitespace-nowrap">
+          <div>{t("page")}</div>
+          <strong>
+            {table.getState().pagination.pageIndex + 1} of{" "}
+            {table.getPageCount().toLocaleString()}
+          </strong>
+        </span>
+        <select
+          value={table.getState().pagination.pageSize}
+          onChange={(e) => {
+            table.setPageSize(Number(e.target.value));
+          }}
+        >
+          {[10, 15, 20].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              {t("show", { pageSize })}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
