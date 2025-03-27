@@ -43,10 +43,14 @@ export const useCountryRanking = () => {
     }
 
     if (searchTerm) {
-      filteredData = filteredData.filter((country) =>
-        country.name.common
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()),
+      filteredData = filteredData.filter(
+        (country) =>
+          country.name.common
+            .toLocaleLowerCase()
+            .includes(searchTerm.toLocaleLowerCase()) ||
+          country.region
+            .toLocaleLowerCase()
+            .includes(searchTerm.toLocaleLowerCase()),
       );
     }
 
